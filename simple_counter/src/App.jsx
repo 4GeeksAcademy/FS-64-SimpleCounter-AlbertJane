@@ -6,21 +6,24 @@ import './App.css'
 function App() {
 
   let counterState = 0;
-
+  
+  {window.onload =  () => {
+    let counterContainer = ReactDOM.createRoot(document.querySelector('#counter'));
+    setInterval(() => {
+      counterContainer.render(
+        <SecoundsCounter seconds={counterState} />
+        
+      )
+      {counterState = counterState + 1}
+    },1000);
+  }}
+ 
 
   return (
     <>
       <div className="app__container">
       <div id="counter"></div>
-      {window.onload =  () => {
-        setInterval(() => {
-          ReactDOM.createRoot(document.querySelector('#counter')).render(
-            <SecoundsCounter seconds={counterState} />
-            
-          )
-          {counterState = counterState + 1}
-        },1000);
-      }}
+      
 
       </div>
         
